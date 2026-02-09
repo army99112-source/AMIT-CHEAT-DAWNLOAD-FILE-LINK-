@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Open Link</title>
+<title>Redirect Page</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -66,11 +66,18 @@ button{
   cursor:pointer;
 }
 
-#processing{
+#processing, #redirecting{
   display:none;
   margin-top:15px;
-  color:#ffd54f;
   font-weight:bold;
+}
+
+#processing{
+  color:#ffd54f;
+}
+
+#redirecting{
+  color:#4caf50;
 }
 
 footer{
@@ -85,29 +92,34 @@ footer{
 
 <div class="card">
 
-  <!-- 🔴 यहाँ तुम्हारा photo लगेगा -->
+  <!-- अपना logo -->
   <div class="icon">
-    <img src="image.png" alt="logo">
+    <img src="logo.png" alt="logo">
   </div>
 
   <h2>Welcome</h2>
   <p>Tap the button below to continue</p>
 
-  <button onclick="startProcess()">OPEN LINK</button>
+  <button id="btn" onclick="startProcess()">OPEN LINK</button>
 
   <div id="processing">
     Processing... <span id="timer">5</span>s
   </div>
 
+  <div id="redirecting">
+    Redirecting to destination...
+  </div>
+
   <footer>
-    © 2026 | MADE BY AMIT CHEAT
+    © 2026 | Your Page
   </footer>
 
 </div>
 
 <script>
 function startProcess(){
-  let time = 5; // कितने second का timer चाहिए (change कर सकते हो)
+  let time = 5; // timer seconds
+  document.getElementById("btn").disabled = true;
   document.getElementById("processing").style.display = "block";
   document.getElementById("timer").innerText = time;
 
@@ -117,8 +129,15 @@ function startProcess(){
 
     if(time <= 0){
       clearInterval(countdown);
-      // 👇 अपना link यहाँ डालना है
-      window.location.href = "http://followyou.me/8J19uaG";
+
+      // processing hide, redirecting show
+      document.getElementById("processing").style.display = "none";
+      document.getElementById("redirecting").style.display = "block";
+
+      // 2 second बाद असली link खुलेगा
+      setTimeout(function(){
+        window.location.href = "http://followyou.me/8J19uaG"; // 👈 अपना link यहाँ डालो
+      },2000);
     }
   },1000);
 }
