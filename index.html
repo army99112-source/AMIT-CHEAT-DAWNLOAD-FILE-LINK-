@@ -2,62 +2,93 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>My Download Page</title>
+<title>My Link Dawnload</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body{
+*{
   margin:0;
   padding:0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  box-sizing:border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
+  display:flex;
+  justify-content:center;
+  align-items:center;
   color:white;
-  text-align:center;
-}
-
-.container{
-  margin-top:50px;
-  padding:20px;
-}
-
-h1{
-  font-size:28px;
-  margin-bottom:10px;
-}
-
-p{
-  font-size:16px;
-  opacity:0.9;
 }
 
 .card{
-  background: rgba(255,255,255,0.1);
-  padding:20px;
-  border-radius:15px;
-  max-width:350px;
-  margin:20px auto;
+  width:90%;
+  max-width:360px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  border-radius:22px;
+  padding:30px 20px;
+  text-align:center;
+  box-shadow:0 0 40px rgba(0,0,0,0.5);
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+.icon{
+  width:90px;
+  height:90px;
+  margin:0 auto 15px;
+  border-radius:50%;
+  background: linear-gradient(45deg,#ff512f,#f09819);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:40px;
   box-shadow:0 0 20px rgba(0,0,0,0.4);
 }
 
-a button{
+h1{
+  font-size:24px;
+  margin-bottom:6px;
+}
+
+p{
+  font-size:14px;
+  opacity:0.85;
+  margin-bottom:25px;
+}
+
+a{
+  text-decoration:none;
+}
+
+.btn{
   width:100%;
   padding:15px;
-  margin:10px 0;
-  font-size:16px;
   border:none;
-  border-radius:30px;
+  border-radius:40px;
+  font-size:17px;
+  font-weight:600;
   cursor:pointer;
-  background: linear-gradient(45deg,#ff512f,#dd2476);
   color:white;
+  background: linear-gradient(45deg,#00c6ff,#0072ff);
   transition:0.3s;
 }
 
-a button:hover{
-  transform: scale(1.05);
-  background: linear-gradient(45deg,#24c6dc,#514a9d);
+.btn:hover{
+  transform:scale(1.05);
+  background: linear-gradient(45deg,#f7971e,#ffd200);
+  box-shadow:0 6px 18px rgba(0,0,0,0.5);
 }
 
 footer{
-  margin-top:30px;
-  font-size:13px;
+  margin-top:18px;
+  font-size:12px;
   opacity:0.7;
 }
 </style>
@@ -65,31 +96,25 @@ footer{
 
 <body>
 
-<div class="container">
-  <h1>🔥 Welcome to My Page 🔥</h1>
-  <p>Click below to open links</p>
+<div class="card">
+  <div class="icon">🚀</div>
+  <h1>Welcome</h1>
+  <p>Tap the button below to continue</p>
 
-  <div class="card">
-    <a href="http://followyou.me/8J19uaG" target="_blank">
-      <button>🔗 Link 1</button>
-    </a>
-
-    <a href="http://followyou.me/8J19uaG" target="_blank">
-      <button>🎥 Link 2</button>
-    </a>
-
-    <a href="http://followyou.me/8J19uaG" target="_blank">
-      <button>📥 Link 3</button>
-    </a>
-  </div>
+  <!-- 🔗 अपना सिर्फ एक link यहाँ डालो -->
+  <a href="http://followyou.me/8J19uaG="_blank">
+    <button class="btn">OPEN LINK</button>
+  </a>
 
   <footer>
-    © 2026 | Made by AMIT CHEAT ❤️
+    © 2026 | Your Page
   </footer>
 </div>
 
 <script>
-alert("Welcome! Click any button to open link.");
+setTimeout(()=>{
+  console.log("Page loaded successfully");
+},500);
 </script>
 
 </body>
