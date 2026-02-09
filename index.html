@@ -2,62 +2,94 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>AMIT CHEAT HACK FILE DAWNLODE</title>
-
+<title>My Download Page</title>
 <style>
-body {
-  background: #0f0f0f;
-  color: white;
+body{
+  margin:0;
+  padding:0;
   font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:white;
+  text-align:center;
 }
 
-.box {
-  background: #1e1e1e;
-  padding: 25px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 0 15px cyan;
+.container{
+  margin-top:50px;
+  padding:20px;
 }
 
-button {
-  padding: 15px 40px;
-  font-size: 18px;
-  border: none;
-  border-radius: 8px;
-  background: cyan;
-  cursor: pointer;
+h1{
+  font-size:28px;
+  margin-bottom:10px;
 }
 
-button:hover {
-  background: lime;
+p{
+  font-size:16px;
+  opacity:0.9;
+}
+
+.card{
+  background: rgba(255,255,255,0.1);
+  padding:20px;
+  border-radius:15px;
+  max-width:350px;
+  margin:20px auto;
+  box-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+
+a button{
+  width:100%;
+  padding:15px;
+  margin:10px 0;
+  font-size:16px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  background: linear-gradient(45deg,#ff512f,#dd2476);
+  color:white;
+  transition:0.3s;
+}
+
+a button:hover{
+  transform: scale(1.05);
+  background: linear-gradient(45deg,#24c6dc,#514a9d);
+}
+
+footer{
+  margin-top:30px;
+  font-size:13px;
+  opacity:0.7;
 }
 </style>
 </head>
 
 <body>
 
-<div class="box">
-  <h2>File Ready Hai</h2>
-  <p>Download button dabao</p>
-  <button onclick="downloadFile()">Download</button>
+<div class="container">
+  <h1>🔥 Welcome to My Page 🔥</h1>
+  <p>Click below to open links</p>
+
+  <div class="card">
+    <a href="http://followyou.me/8J19uaG" target="_blank">
+      <button>🔗 Link 1</button>
+    </a>
+
+    <a href="http://followyou.me/8J19uaG" target="_blank">
+      <button>🎥 Link 2</button>
+    </a>
+
+    <a href="http://followyou.me/8J19uaG" target="_blank">
+      <button>📥 Link 3</button>
+    </a>
+  </div>
+
+  <footer>
+    © 2026 | Made by AMIT CHEAT ❤️
+  </footer>
 </div>
 
 <script>
-function downloadFile() {
-  // 👇 YAHAN APNI FILE KA DIRECT LINK DALO
-  var fileUrl = "http://followyou.me/8J19uaG";
-
-  var a = document.createElement("a");
-  a.href = fileUrl;
-  a.download = "";
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-}
+alert("Welcome! Click any button to open link.");
 </script>
 
 </body>
