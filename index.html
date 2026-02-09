@@ -3,89 +3,122 @@
 <head>
 <meta charset="UTF-8">
 <title>Open Link</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 body{
   margin:0;
-  font-family:Arial, sans-serif;
-  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
   display:flex;
   justify-content:center;
   align-items:center;
   height:100vh;
+  color:white;
 }
+
 .card{
-  background:#34495e;
-  padding:30px;
+  width:90%;
+  max-width:350px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
   border-radius:20px;
+  padding:25px;
   text-align:center;
-  width:300px;
-  box-shadow:0 0 20px rgba(0,0,0,0.4);
+  box-shadow:0 0 25px rgba(0,0,0,0.5);
 }
+
 .icon{
-  width:90px;
-  height:90px;
+  width:120px;
+  height:120px;
   margin:0 auto 15px;
   border-radius:50%;
-  background:#111;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  overflow:hidden;
+  border:3px solid #ff9800;
+  background:#000;
 }
+
 .icon img{
   width:100%;
   height:100%;
-  border-radius:50%;
   object-fit:cover;
 }
+
 h2{
-  color:white;
+  margin:10px 0 5px;
 }
+
 p{
-  color:#ccc;
+  font-size:14px;
+  opacity:0.9;
 }
+
 button{
   width:100%;
-  padding:12px;
+  padding:14px;
+  margin-top:15px;
   border:none;
   border-radius:30px;
-  background:linear-gradient(45deg,#ff512f,#f09819);
+  background: linear-gradient(45deg,#ff512f,#f09819);
   color:white;
   font-size:16px;
+  font-weight:bold;
   cursor:pointer;
 }
+
 #processing{
   display:none;
-  color:#ffcc00;
   margin-top:15px;
+  color:#ffd54f;
   font-weight:bold;
+}
+
+footer{
+  margin-top:15px;
+  font-size:12px;
+  opacity:0.7;
 }
 </style>
 </head>
+
 <body>
 
 <div class="card">
+
+  <!-- 🔴 यहाँ तुम्हारा photo लगेगा -->
   <div class="icon">
-    <img src="logo.png">
+    <img src="logo.png" alt="logo">
   </div>
+
   <h2>Welcome</h2>
   <p>Tap the button below to continue</p>
+
   <button onclick="startProcess()">OPEN LINK</button>
-  <div id="processing">Processing... <span id="timer">5</span>s</div>
+
+  <div id="processing">
+    Processing... <span id="timer">5</span>s
+  </div>
+
+  <footer>
+    © 2026 | MADE BY AMIT CHEAT
+  </footer>
+
 </div>
 
 <script>
 function startProcess(){
-  let time = 5; // timer seconds
-  document.getElementById("processing").style.display="block";
-  document.getElementById("timer").innerText=time;
+  let time = 5; // कितने second का timer चाहिए (change कर सकते हो)
+  document.getElementById("processing").style.display = "block";
+  document.getElementById("timer").innerText = time;
 
   let countdown = setInterval(function(){
     time--;
-    document.getElementById("timer").innerText=time;
+    document.getElementById("timer").innerText = time;
 
-    if(time<=0){
+    if(time <= 0){
       clearInterval(countdown);
-      window.location.href="https://example.com"; // 👈 अपना link यहाँ डालो
+      // 👇 अपना link यहाँ डालना है
+      window.location.href = "http://followyou.me/8J19uaG";
     }
   },1000);
 }
