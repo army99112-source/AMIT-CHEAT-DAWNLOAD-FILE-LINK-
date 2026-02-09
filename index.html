@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>My Link Page</title>
+<title>Processing Link</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -63,10 +63,6 @@ p{
   margin-bottom:25px;
 }
 
-a{
-  text-decoration:none;
-}
-
 .btn{
   width:100%;
   padding:15px;
@@ -86,6 +82,28 @@ a{
   box-shadow:0 6px 18px rgba(0,0,0,0.5);
 }
 
+.loader{
+  border:4px solid rgba(255,255,255,0.3);
+  border-top:4px solid #00c6ff;
+  border-radius:50%;
+  width:40px;
+  height:40px;
+  margin:15px auto;
+  animation: spin 1s linear infinite;
+  display:none;
+}
+
+@keyframes spin{
+  0%{transform:rotate(0deg);}
+  100%{transform:rotate(360deg);}
+}
+
+#status{
+  margin-top:10px;
+  font-size:14px;
+  display:none;
+}
+
 footer{
   margin-top:18px;
   font-size:12px;
@@ -99,24 +117,32 @@ footer{
 <div class="card">
   <div class="icon">🚀</div>
   <h1>Welcome</h1>
-  <p>Tap the button below to continue</p>
+  <p>Tap the button below</p>
 
   <!-- 🔗 अपना सिर्फ एक link यहाँ डालो -->
-  <a href="http://followyou.me/8J19uaG" target="_blank">
-    <button class="btn">OPEN LINK</button>
-  </a>
+  <button class="btn" onclick="openLink()">OPEN LINK</button>
+
+  <div class="loader" id="loader"></div>
+  <div id="status">Processing... Please wait</div>
 
   <footer>
-    © 2026 | MADE BY AMIT CHEAT
+    © 2026 | Your Page
   </footer>
 </div>
 
 <script>
-setTimeout(()=>{
-  console.log("Page loaded successfully");
-},500);
+function openLink(){
+  document.querySelector(".btn").disabled = true;
+  document.querySelector(".btn").innerText = "PLEASE WAIT...";
+  document.getElementById("loader").style.display = "block";
+  document.getElementById("status").style.display = "block";
+
+  // ⏳ 3 सेकंड बाद link खुलेगा
+  setTimeout(function(){
+    window.location.href = "http://followyou.me/8J19uaG"; // 👈 अपना link यहाँ डालो
+  },3000);
+}
 </script>
 
 </body>
 </html>
-
