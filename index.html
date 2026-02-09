@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Redirect Page</title>
+<title>Processing...</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body{
   margin:0;
   font-family: Arial, sans-serif;
-  background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
   display:flex;
   justify-content:center;
   align-items:center;
@@ -48,11 +48,6 @@ h2{
   margin:10px 0 5px;
 }
 
-p{
-  font-size:14px;
-  opacity:0.9;
-}
-
 button{
   width:100%;
   padding:14px;
@@ -72,18 +67,21 @@ button{
   font-weight:bold;
 }
 
-#processing{
-  color:#ffd54f;
+.progress-box{
+  width:100%;
+  height:12px;
+  background:#333;
+  border-radius:10px;
+  margin-top:10px;
+  overflow:hidden;
+  display:none;
 }
 
-#redirecting{
-  color:#4caf50;
-}
-
-footer{
-  margin-top:15px;
-  font-size:12px;
-  opacity:0.7;
+.progress-bar{
+  height:100%;
+  width:0%;
+  background: linear-gradient(90deg,#4caf50,#ffeb3b,#ff5722);
+  transition: width 0.3s;
 }
 </style>
 </head>
@@ -98,7 +96,7 @@ footer{
   </div>
 
   <h2>Welcome</h2>
-  <p>Tap the button below to continue</p>
+  <p>Click button to continue</p>
 
   <button id="btn" onclick="startProcess()">OPEN LINK</button>
 
@@ -106,37 +104,39 @@ footer{
     Processing... <span id="timer">5</span>s
   </div>
 
-  <div id="redirecting">
-    Redirecting to destination...
+  <div class="progress-box" id="progressBox">
+    <div class="progress-bar" id="progressBar"></div>
   </div>
 
-  <footer>
-    © 2026 | Your Page
-  </footer>
+  <div id="redirecting">
+    Redirecting...
+  </div>
 
 </div>
 
 <script>
 function startProcess(){
-  let time = 5; // timer seconds
+  let time = 5; // seconds
+  let total = time;
   document.getElementById("btn").disabled = true;
   document.getElementById("processing").style.display = "block";
-  document.getElementById("timer").innerText = time;
+  document.getElementById("progressBox").style.display = "block";
 
   let countdown = setInterval(function(){
     time--;
     document.getElementById("timer").innerText = time;
 
+    let percent = ((total - time) / total) * 100;
+    document.getElementById("progressBar").style.width = percent + "%";
+
     if(time <= 0){
       clearInterval(countdown);
 
-      // processing hide, redirecting show
       document.getElementById("processing").style.display = "none";
       document.getElementById("redirecting").style.display = "block";
 
-      // 2 second बाद असली link खुलेगा
       setTimeout(function(){
-        window.location.href = "http://followyou.me/8J19uaG"; // 👈 अपना link यहाँ डालो
+        window.location.href = "https://example.com"; // 👈 अपना link डालो
       },2000);
     }
   },1000);
