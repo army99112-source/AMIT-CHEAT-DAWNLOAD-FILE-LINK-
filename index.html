@@ -1,126 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
+here<!DOCTYPE html>
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Open Link</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-body{
-  margin:0;
-  font-family: Arial, sans-serif;
-  background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-  color:white;
-}
-
-.card{
-  width:90%;
-  max-width:350px;
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(10px);
-  border-radius:20px;
-  padding:25px;
-  text-align:center;
-  box-shadow:0 0 25px rgba(0,0,0,0.5);
-}
-
-.icon{
-  width:120px;
-  height:120px;
-  margin:0 auto 15px;
-  border-radius:50%;
-  overflow:hidden;
-  border:3px solid #ff9800;
-  background:#000;
-}
-
-.icon img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-h2{
-  margin:10px 0 5px;
-}
-
-p{
-  font-size:14px;
-  opacity:0.9;
-}
-
-button{
-  width:100%;
-  padding:14px;
-  margin-top:15px;
-  border:none;
-  border-radius:30px;
-  background: linear-gradient(45deg,#ff512f,#f09819);
-  color:white;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-#processing{
-  display:none;
-  margin-top:15px;
-  color:#ffd54f;
-  font-weight:bold;
-}
-
-footer{
-  margin-top:15px;
-  font-size:12px;
-  opacity:0.7;
-}
-</style>
+  <title>Get Your Key</title>
+  <style>
+    body { background:#111; color:white; text-align:center; font-family:Arial; }
+    .box { margin-top:100px; padding:20px; background:#222; border-radius:10px; width:300px; margin:auto; }
+    button { padding:10px 20px; font-size:16px; cursor:pointer; }
+    input { padding:10px; width:90%; text-align:center; }
+  </style>
 </head>
-
 <body>
 
-<div class="card">
+<div class="box">
+  <h2>Get Your Key</h2>
+  <p>Click below to unlock key</p>
+  <button id="unlockBtn" onclick="goToShortener()">Unlock Key</button>
 
-  <!-- 🔴 यहाँ तुम्हारा photo लगेगा -->
-  <div class="icon">
-    <img src="logo.png" alt="logo">
+  <div id="keyBox" style="display:none;margin-top:20px;">
+    <input type="text" value="TEST-KEY-12345" id="myKey" readonly>
+    <br><br>
+    <button onclick="copyKey()">Copy Key</button>
   </div>
-
-  <h2>Welcome</h2>
-  <p>Tap the button below to continue</p>
-
-  <button onclick="startProcess()">OPEN LINK</button>
-
-  <div id="processing">
-    Processing... <span id="timer">5</span>s
-  </div>
-
-  <footer>
-    © 2026 | Your Page
-  </footer>
-
 </div>
 
 <script>
-function startProcess(){
-  let time = 5; // कितने second का timer चाहिए (change कर सकते हो)
-  document.getElementById("processing").style.display = "block";
-  document.getElementById("timer").innerText = time;
+function goToShortener(){
+  // shortener link (jo wapas ?done=1 ke sath bheje)
+  window.location.href = "http://followyou.me/7fMiHTl";
+}
 
-  let countdown = setInterval(function(){
-    time--;
-    document.getElementById("timer").innerText = time;
+// URL check
+const params = new URLSearchParams(window.location.search);
+if(params.get("done") === "1"){
+  document.getElementById("keyBox").style.display = "block";
+  document.getElementById("unlockBtn").style.display = "none";
+}
 
-    if(time <= 0){
-      clearInterval(countdown);
-      // 👇 अपना link यहाँ डालना है
-      window.location.href = "https://example.com";
-    }
-  },1000);
+function copyKey(){
+  var copyText = document.getElementById("myKey");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  alert("Key Copied!");
 }
 </script>
 
