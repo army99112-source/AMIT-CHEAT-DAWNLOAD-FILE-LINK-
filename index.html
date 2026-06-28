@@ -13,49 +13,50 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 </head>
 <body>
-<!-- Live Visitor Counter Element -->
-<div id="visitor-counter">
-    <span class="live-dot"></span>
-    Live Users: <span id="count-number">5000</span>
-</div>
+    <div id="visitor-counter">
+        <span class="live-dot"></span>
+        Live Users: <span id="count-number">5000</span>
+    </div>
 
-<style>
-#visitor-counter {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    background: rgba(26, 21, 44, 0.85); /* Aapke theme se match karta hua dark background */
-    color: #00f3ff; /* Neon Cyan color jo AMIT CHEAT text se match kare */
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-family: 'Arial', sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    box-shadow: 0 0 10px rgba(0, 243, 255, 0.5); /* Neon Glow effect */
-    border: 1px solid rgba(0, 243, 255, 0.3);
-    z-index: 9999; /* Taaki ye sabse upar dikhe */
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
+    <style>
+    #visitor-counter {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        background: rgba(26, 21, 44, 0.85);
+        color: #00f3ff;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-family: 'Arial', sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        box-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+        border: 1px solid rgba(0, 243, 255, 0.3);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .live-dot {
+        width: 8px;
+        height: 8px;
+        background-color: #00ff66;
+        border-radius: 50%;
+        display: inline-block;
+        box-shadow: 0 0 8px #00ff66;
+        animation: blink 1.5s infinite;
+    }
+    @keyframes blink {
+        0% { opacity: 0.4; }
+        50% { opacity: 1; }
+        100% { opacity: 0.4; }
+    }
+    </style>
 
-/* Chhota blinking green dot dynamic look ke liye */
-.live-dot {
-    width: 8px;
-    height: 8px;
-    background-color: #00ff66;
-    border-radius: 50%;
-    display: inline-block;
-    box-shadow: 0 0 8px #00ff66;
-    animation: blink 1.5s infinite;
-}
-
-@keyframes blink {
-    0% { opacity: 0.4; }
-    50% { opacity: 1; }
-    100% { opacity: 0.4; }
-}
-</style>
+    <div class="welcome-box">
+        <h1>Welcome to AMIT CHEAT</h1>
+        ...
+        
     
 <div id="particles"></div>
 
@@ -122,29 +123,27 @@ Go to Login →
 </div>
 
 <script src="script.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Check karna ki kya pehle se koi count database/local me hai
-    let currentCount = localStorage.getItem('web_visitor_count');
-    
-    if (!currentCount) {
-        // Agar pehle se koi count nahi hai, to 5000 se start hoga
-        currentCount = 5000;
-    } else {
-        // Agar hai to use number me badlenge
-        currentCount = parseInt(currentCount);
-    }
-    
-    // Har baar page load hone par (ya naye visitor aane par) 1 point badhega
-    currentCount += 1;
-    
-    // Naye count ko save karna
-    localStorage.setItem('web_visitor_count', currentCount);
-    
-    // Screen par dikhane ke liye
-    document.getElementById('count-number').innerText = currentCount;
-});
-</script>
+    ...
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const siteKey = "amit_cheat_official_counter"; 
+        const apiUrl = `https://api.countapi.xyz/hit/${siteKey}/visits`;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                let globalCount = 5000 + data.value;
+                document.getElementById('count-number').innerText = globalCount;
+            })
+            .catch(error => {
+                console.log("Counter error:", error);
+                document.getElementById('count-number').innerText = "5000+";
+            });
+    });
+    </script>
+
+</body> </html>
+
     
 </body>
 </html>
