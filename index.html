@@ -13,7 +13,50 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 </head>
 <body>
+<!-- Live Visitor Counter Element -->
+<div id="visitor-counter">
+    <span class="live-dot"></span>
+    Live Users: <span id="count-number">5000</span>
+</div>
 
+<style>
+#visitor-counter {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: rgba(26, 21, 44, 0.85); /* Aapke theme se match karta hua dark background */
+    color: #00f3ff; /* Neon Cyan color jo AMIT CHEAT text se match kare */
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.5); /* Neon Glow effect */
+    border: 1px solid rgba(0, 243, 255, 0.3);
+    z-index: 9999; /* Taaki ye sabse upar dikhe */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Chhota blinking green dot dynamic look ke liye */
+.live-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #00ff66;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 8px #00ff66;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 0.4; }
+    50% { opacity: 1; }
+    100% { opacity: 0.4; }
+}
+</style>
+    
 <div id="particles"></div>
 
 <div class="container">
