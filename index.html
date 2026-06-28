@@ -122,6 +122,29 @@ Go to Login →
 </div>
 
 <script src="script.js"></script>
-
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Check karna ki kya pehle se koi count database/local me hai
+    let currentCount = localStorage.getItem('web_visitor_count');
+    
+    if (!currentCount) {
+        // Agar pehle se koi count nahi hai, to 5000 se start hoga
+        currentCount = 5000;
+    } else {
+        // Agar hai to use number me badlenge
+        currentCount = parseInt(currentCount);
+    }
+    
+    // Har baar page load hone par (ya naye visitor aane par) 1 point badhega
+    currentCount += 1;
+    
+    // Naye count ko save karna
+    localStorage.setItem('web_visitor_count', currentCount);
+    
+    // Screen par dikhane ke liye
+    document.getElementById('count-number').innerText = currentCount;
+});
+</script>
+    
 </body>
 </html>
