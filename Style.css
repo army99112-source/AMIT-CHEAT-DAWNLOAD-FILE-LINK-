@@ -146,3 +146,28 @@ h1 span{
     color:#888;
     font-size:13px;
 }
+.star{
+position:absolute;
+background:#fff;
+border-radius:50%;
+box-shadow:0 0 10px #00e5ff;
+animation:float linear infinite;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0);
+opacity:.2;
+}
+
+50%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-120px);
+opacity:0;
+}
+
+}
