@@ -1,167 +1,83 @@
-l<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Reseller Pro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Firebase CDN -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<title>Hunter Mods</title>
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-    font-family:sans-serif;
-    background:linear-gradient(135deg,#667eea,#764ba2);
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-.container{
-    width:350px;
-    padding:25px;
-    border-radius:20px;
-    background:rgba(255,255,255,0.15);
-    backdrop-filter:blur(15px);
-    text-align:center;
-    color:white;
-}
-input{
-    width:100%;
-    padding:12px;
-    margin:10px 0;
-    border:none;
-    border-radius:10px;
-}
-button{
-    width:100%;
-    padding:12px;
-    border:none;
-    border-radius:10px;
-    background:linear-gradient(45deg,#ff6b6b,#feca57);
-    color:white;
-    cursor:pointer;
-}
-#adminPanel,#userPanel{display:none;margin-top:20px;}
-.product{
-    background:white;
-    color:black;
-    padding:10px;
-    border-radius:10px;
-    margin:5px 0;
-}
-</style>
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 </head>
-
 <body>
 
+<div id="particles"></div>
+
 <div class="container">
-<h2>🔥 Reseller Pro</h2>
 
-<input id="email" placeholder="Email">
-<input id="pass" type="password" placeholder="Password">
+<div class="card">
 
-<button onclick="register()">Register</button>
-<button onclick="login()">Login</button>
+<img src="logo.png" class="logo">
 
-<div id="adminPanel">
-<h3>👑 Admin Panel</h3>
-<input id="productName" placeholder="Product Name">
-<button onclick="addProduct()">Add Product</button>
+<h1>
+Welcome to
+<span>Hunter Mods</span>
+</h1>
+
+<p class="subtitle">
+Join karo aur connect raho.
+Niche se choose karo.
+</p>
+
+<a href="#" class="btn insta">
+<i class="fab fa-instagram"></i>
+Join Instagram
+</a>
+
+<a href="#" class="btn youtube">
+<i class="fab fa-youtube"></i>
+Subscribe YouTube
+</a>
+
+<a href="#" class="btn telegram">
+<i class="fab fa-telegram-plane"></i>
+Join Telegram
+</a>
+
+<a href="#" class="btn download">
+<i class="fa fa-download"></i>
+Download Tools
+</a>
+
+<a href="key.html" class="btn key">
+<i class="fa fa-key"></i>
+Get Free Key
+</a>
+
+<button class="feedback">
+Feedback
+</button>
+
+<p class="feedback-text">
+Feedback abhi band hai.
+</p>
+
+<a href="#" class="login">
+Go to Login →
+</a>
+
+<p class="footer">
+© 2026 Hunter Mods. All rights reserved.
+</p>
+
 </div>
 
-<div id="userPanel">
-<h3>🛒 Products</h3>
-<div id="productList"></div>
 </div>
 
-</div>
-
-<script>
-
-// ✅ YOUR FIREBASE CONFIG (ALREADY ADDED)
-const firebaseConfig = {
-  apiKey: "AIzaSyBmBtjvWp1IdDKAWDMti8BvOM_qT-awEKU",
-  authDomain: "amit-sell.firebaseapp.com",
-  projectId: "amit-sell",
-  storageBucket: "amit-sell.firebasestorage.app",
-  messagingSenderId: "149109135773",
-  appId: "1:149109135773:web:919c0a11bc814abaa3b774"
-};
-
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-const db = firebase.firestore();
-
-// 👑 ADMIN EMAIL
-const ADMIN_EMAIL = "admin@gmail.com";
-
-// REGISTER
-function register(){
- let email = document.getElementById("email").value;
- let pass = document.getElementById("pass").value;
-
- auth.createUserWithEmailAndPassword(email, pass)
- .then(()=> alert("✅ Account Created"))
- .catch(e=> alert(e.message));
-}
-
-// LOGIN
-function login(){
- let email = document.getElementById("email").value;
- let pass = document.getElementById("pass").value;
-
- auth.signInWithEmailAndPassword(email, pass)
- .then(()=>{
-   if(email === ADMIN_EMAIL){
-     showAdmin();
-   }else{
-     showUser();
-   }
- })
- .catch(e=> alert(e.message));
-}
-
-// ADMIN PANEL
-function showAdmin(){
- document.getElementById("adminPanel").style.display="block";
- document.getElementById("userPanel").style.display="none";
-}
-
-// USER PANEL
-function showUser(){
- document.getElementById("userPanel").style.display="block";
- document.getElementById("adminPanel").style.display="none";
- loadProducts();
-}
-
-// ADD PRODUCT
-function addProduct(){
- let name = document.getElementById("productName").value;
-
- db.collection("products").add({ name:name });
-
- alert("🔥 Product Added");
-}
-
-// LOAD PRODUCTS
-function loadProducts(){
- let list = document.getElementById("productList");
- list.innerHTML="";
-
- db.collection("products").get().then((data)=>{
-   data.forEach(doc=>{
-     let div = document.createElement("div");
-     div.className="product";
-     div.innerText = doc.data().name;
-     list.appendChild(div);
-   });
- });
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
