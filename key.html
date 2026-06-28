@@ -10,7 +10,11 @@
 
 </head>
 <body>
-
+<div id="key-counter-box">
+    <span class="live-pulse"></span>
+    Keys Generated: <span id="key-count-number">5142</span>
+</div>
+  
 <div class="bg"></div>
 
 <div class="card">
@@ -50,68 +54,7 @@ KEY COPIED ✓
     Keys Generated: <span id="key-count-number">5142</span>
 </div>
 
-<style>
-#key-counter-box {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    background: rgba(18, 14, 38, 0.9); /* Dark background matching your site */
-    color: #00f3ff; /* Neon cyan color code text */
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-family: 'Arial', sans-serif;
-    font-size: 13px;
-    font-weight: bold;
-    box-shadow: 0 0 12px rgba(0, 243, 255, 0.4); /* Neon glow effect */
-    border: 1px solid rgba(0, 243, 255, 0.25);
-    z-index: 99999; /* Sabse upar dikhega */
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
 
-.live-pulse {
-    width: 7px;
-    height: 7px;
-    background-color: #00ff66; /* Green blinking dot */
-    border-radius: 50%;
-    display: inline-block;
-    box-shadow: 0 0 8px #00ff66;
-    animation: pulseGlow 1.6s infinite;
-}
-
-@keyframes pulseGlow {
-    0% { opacity: 0.3; transform: scale(0.9); }
-    50% { opacity: 1; transform: scale(1.1); }
-    100% { opacity: 0.3; transform: scale(0.9); }
-}
-</style>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    let localSavedCount = localStorage.getItem('total_keys_generated_final');
-    
-    if (!localSavedCount) {
-        localSavedCount = 5142; // 5000 se upar ka unique number shuruat ke liye
-        localStorage.setItem('total_keys_generated_final', localSavedCount);
-    } else {
-        localSavedCount = parseInt(localSavedCount);
-    }
-
-    // Check ki kya is bande ka count ho chuka hai is baar ke liye
-    let alreadyCounted = sessionStorage.getItem('key_counted_session');
-
-    if (!alreadyCounted) {
-        // Sirf tabhi badhega jab banda fresh page par aakar key generate karega
-        localSavedCount += 1;
-        localStorage.setItem('total_keys_generated_final', localSavedCount);
-        sessionStorage.setItem('key_counted_session', 'true');
-    }
-
-    // Screen par value dikhane ke liye
-    document.getElementById('key-count-number').innerText = localSavedCount;
-});
-</script>
   
 </body>
 </html>
