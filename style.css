@@ -171,25 +171,3 @@ opacity:0;
 }
 
 }
-.title{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:10px;
-    margin-top:20px;
-}
-
-.welcome{
-    color:#ffffff;
-    font-size:34px;
-    font-weight:700;
-    letter-spacing:2px;
-}
-
-.brand{
-    color:#2ef7c7;
-    font-size:52px;
-    font-weight:900;
-    letter-spacing:3px;
-    text-shadow:0 0 12px #2ef7c7;
-}
