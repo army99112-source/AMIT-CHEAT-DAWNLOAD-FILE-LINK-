@@ -27,9 +27,9 @@ const feedbackBtn = document.querySelector(".feedback");
 
 feedbackBtn.addEventListener("click", function () {
 
-    alert("Feedback feature coming soon!");
+    <!--alert("Feedback feature coming soon!");
 
-});
+});-->
 
 // ===== Button Hover Animation =====
 
