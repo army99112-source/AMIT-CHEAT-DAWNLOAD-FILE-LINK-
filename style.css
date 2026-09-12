@@ -175,3 +175,14 @@ opacity:0;
 }
 
 }
+/* WhatsApp Button */
+.btn.whatsapp {
+    background: linear-gradient(45deg, #25D366, #128C7E);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+}
+
+.btn.whatsapp:hover {
+    background: linear-gradient(45deg, #128C7E, #25D366);
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.7);
+}
